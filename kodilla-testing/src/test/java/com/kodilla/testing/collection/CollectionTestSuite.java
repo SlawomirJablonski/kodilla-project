@@ -40,7 +40,7 @@ public class CollectionTestSuite {
     @Test
     public void testOddNumbersExterminatorNormalList(){
         //Given
-        Integer firstNumber = 5;
+        Integer firstNumber = 3;
         Integer secondNumber = 6;
         OddNumbersExterminator normalExterminator = new OddNumbersExterminator();
         ArrayList<Integer> givenList = new ArrayList<>();
