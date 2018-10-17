@@ -38,15 +38,13 @@ public class ShapeCollectorTestSuite {
         double cSide = -2;
         Shape shape3 = new Triangle(aSide, bSide, cSide);
         //When
-        if (radius > 0) {
+
             collector.addFigure(shape1);
-        }
-        if (radius > 0) {
+
             collector.addFigure(shape2);
-        }
-        if (aSide > 0 && bSide > 0 && cSide > 0) {
+
             collector.addFigure(shape3);
-        }
+
         //Then
         Assert.assertEquals(2, shapeList.size());
     }
@@ -59,23 +57,18 @@ public class ShapeCollectorTestSuite {
 
         double radius = 2;
         Shape shape1 = new Circle(radius);
-        if (radius > 0) {
             shapeList.add(shape1);
-        }
+
 
         double side = 2;
         Shape shape2 = new Square(side);
-        if (side > 0) {
             shapeList.add(shape2);
-        }
 
         double aSide = 2;
         double bSide = 4;
         double cSide = -2;
         Shape shape3 = new Triangle(aSide, bSide, cSide);
-        if (aSide > 0 && bSide > 0 && cSide > 0) {
             shapeList.add(shape3);
-        }
 
         //When
         collector.removeFigure(shape1);
@@ -101,15 +94,13 @@ public class ShapeCollectorTestSuite {
         double cSide = -2;
         Shape triangle = new Triangle(aSide, bSide, cSide);
 
-        if (radius > 0) {
+
             shapeList.add(circle);
-        }
-        if (radius > 0) {
+
             shapeList.add(square);
-        }
-        if (aSide > 0 && bSide > 0 && cSide > 0) {
+
             shapeList.add(triangle);
-        }
+
         //When
         Shape retrievedShape = collector.getFigure(1);
         //Then
@@ -131,15 +122,13 @@ public class ShapeCollectorTestSuite {
         double cSide = -2;
         Shape triangle = new Triangle(aSide, bSide, cSide);
 
-        if (radius > 0) {
+
             shapeList.add(circle);
-        }
-        if (radius > 0) {
+
             shapeList.add(square);
-        }
-        if (aSide > 0 && bSide > 0 && cSide > 0) {
+
             shapeList.add(triangle);
-        }
+
         //When
         ArrayList<Shape> retrievedFigures = collector.showFigures();
         //Then
