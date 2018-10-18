@@ -20,15 +20,15 @@ public class StatisticsCalculator {
         return commentsQuantity;
     }
 
-    public double getUserAveragePostsQuantity() {
+    public double getUserAveragePostsQuantity(){
         return userAveragePostsQuantity;
     }
 
-    public double getUserAverageCommentsQuantity() {
+    public double getUserAverageCommentsQuantity(){
         return userAverageCommentsQuantity;
     }
 
-    public double getAverageCommentsQuantityPerPost() {
+    public double getAverageCommentsQuantityPerPost(){
         return averageCommentsQuantityPerPost;
     }
 
