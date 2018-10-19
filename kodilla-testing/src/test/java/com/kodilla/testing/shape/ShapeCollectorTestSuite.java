@@ -3,7 +3,9 @@ package com.kodilla.testing.shape;
 import org.junit.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import static org.junit.Assert.assertEquals;
 
 public class ShapeCollectorTestSuite {
     private static int testCounter = 0;
@@ -28,54 +30,38 @@ public class ShapeCollectorTestSuite {
     public void testAddFigure() {
         //Given
         ShapeCollector collector = new ShapeCollector();
-        ArrayList<Shape> shapeList = new ArrayList<>();
         double radius = 2;
         Shape shape1 = new Circle(radius);
-        double side = 2;
+        double side = 3;
         Shape shape2 = new Square(side);
-        double aSide = 2;
-        double bSide = 4;
-        double cSide = -2;
+        double aSide = 4;
+        double bSide = 6;
+        double cSide = 7;
         Shape shape3 = new Triangle(aSide, bSide, cSide);
         //When
-        if (radius > 0) {
             collector.addFigure(shape1);
-        }
-        if (radius > 0) {
             collector.addFigure(shape2);
-        }
-        if (aSide > 0 && bSide > 0 && cSide > 0) {
             collector.addFigure(shape3);
-        }
         //Then
-        Assert.assertEquals(2, shapeList.size());
+        Assert.assertEquals(3,collector.getShapeList().size());
+
     }
 
     @Test
     public void testRemoveFigure() {
         //Given
         ShapeCollector collector = new ShapeCollector();
-        ArrayList<Shape> shapeList = new ArrayList<>();
-
         double radius = 2;
         Shape shape1 = new Circle(radius);
-        if (radius > 0) {
-            shapeList.add(shape1);
-        }
-
-        double side = 2;
+        double side = 3;
         Shape shape2 = new Square(side);
-        if (side > 0) {
-            shapeList.add(shape2);
-        }
-
-        double aSide = 2;
-        double bSide = 4;
-        double cSide = -2;
+        double aSide = 4;
+        double bSide = 6;
+        double cSide = 7;
         Shape shape3 = new Triangle(aSide, bSide, cSide);
-        if (aSide > 0 && bSide > 0 && cSide > 0) {
-            shapeList.add(shape3);
-        }
+        collector.addFigure(shape1);
+        collector.addFigure(shape2);
+        collector.addFigure(shape3);
 
         //When
         collector.removeFigure(shape1);
@@ -83,7 +69,7 @@ public class ShapeCollectorTestSuite {
         collector.removeFigure(shape3);
 
         //Then
-        Assert.assertEquals(0, shapeList.size());
+        assertEquals(0, collector.getShapeList().size());
 
     }
 
@@ -91,59 +77,39 @@ public class ShapeCollectorTestSuite {
     public void testGetFigure() {
         //Given
         ShapeCollector collector = new ShapeCollector();
-        ArrayList<Shape> shapeList = new ArrayList<>();
         double radius = 2;
         Shape circle = new Circle(radius);
         double side = 2;
         Shape square = new Square(side);
-        double aSide = 2;
-        double bSide = 4;
-        double cSide = -2;
+        double aSide = 4;
+        double bSide = 6;
+        double cSide = 7;
         Shape triangle = new Triangle(aSide, bSide, cSide);
 
-        if (radius > 0) {
-            shapeList.add(circle);
-        }
-        if (radius > 0) {
-            shapeList.add(square);
-        }
-        if (aSide > 0 && bSide > 0 && cSide > 0) {
-            shapeList.add(triangle);
-        }
+        collector.addFigure(circle);
+        collector.addFigure(square);
+        collector.addFigure(triangle);
         //When
         Shape retrievedShape = collector.getFigure(1);
         //Then
-        Assert.assertEquals(square, retrievedShape);
+        assertEquals(square, retrievedShape);
     }
-
 
     @Test
     public void testShowFigures() {
         //Given
-        ShapeCollector collector = new ShapeCollector();
-        ArrayList<Shape> shapeList = new ArrayList<>();
-        double radius = -2;
-        Shape circle = new Circle(radius);
-        double side = -2;
-        Shape square = new Square(side);
-        double aSide = 2;
-        double bSide = 4;
-        double cSide = -2;
-        Shape triangle = new Triangle(aSide, bSide, cSide);
+        ShapeCollector collector1 = new ShapeCollector();
 
-        if (radius > 0) {
-            shapeList.add(circle);
-        }
-        if (radius > 0) {
-            shapeList.add(square);
-        }
-        if (aSide > 0 && bSide > 0 && cSide > 0) {
-            shapeList.add(triangle);
-        }
+        double radius = 2;
+        Shape circle = new Circle(radius);
+        collector1.addFigure(circle);
+
+        List<Shape> listForTest = new ArrayList<>();
+        listForTest.add(circle);
         //When
-        ArrayList<Shape> retrievedFigures = collector.showFigures();
+        String retrievedFigures = collector1.showFigures();
         //Then
-        Assert.assertEquals("[]", retrievedFigures);
+        assertEquals(listForTest.toString(), retrievedFigures);
     }
 }
 
