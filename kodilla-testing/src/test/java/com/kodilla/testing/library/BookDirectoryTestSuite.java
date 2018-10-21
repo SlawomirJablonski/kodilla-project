@@ -134,5 +134,6 @@ public class BookDirectoryTestSuite {
         //Then
         assertEquals(0,booksInHandsOf.size());
     }
+
 }
 
