@@ -11,6 +11,7 @@ public final class ForumUser {
     private final Date birthDay;
     private final List<String> friends;
 
+
     public ForumUser(final String username, final String realName, Date birthDay, List<String> friends) {
         this.username = username;
         this.realName = realName;
