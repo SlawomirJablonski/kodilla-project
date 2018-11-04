@@ -1,34 +1,34 @@
 package com.kodilla.testing.forum.statistics;
 
 public class StatisticsCalculator {
-    int usersQuantity;
-    int postsQuantity;
-    int commentsQuantity;
-    double userAveragePostsQuantity;
-    double userAverageCommentsQuantity;
-    double averageCommentsQuantityPerPost;
+    private int usersQuantity;
+    private int postsQuantity;
+    private int commentsQuantity;
+    private double userAveragePostsQuantity;
+    private double userAverageCommentsQuantity;
+    private double averageCommentsQuantityPerPost;
 
-    public int getUsersNumber() {
+    public int getUsersQuantity() {
         return usersQuantity;
     }
 
-    public int getPostsNumber() {
+    public int getPostsQuantity() {
         return postsQuantity;
     }
 
-    public int getCommentsNumber() {
+    public int getCommentsQuantity() {
         return commentsQuantity;
     }
 
-    public double getUserAveragePostsNumber() {
+    public double getUserAveragePostsQuantity(){
         return userAveragePostsQuantity;
     }
 
-    public double getUserAverageCommentsNumber() {
+    public double getUserAverageCommentsQuantity(){
         return userAverageCommentsQuantity;
     }
 
-    public double getAverageCommentsNumberPerPost() {
+    public double getAverageCommentsQuantityPerPost(){
         return averageCommentsQuantityPerPost;
     }
 
@@ -36,8 +36,14 @@ public class StatisticsCalculator {
         this.usersQuantity = statistics.usersNames().size();
         this.postsQuantity = statistics.postsCount();
         this.commentsQuantity = statistics.commentsCount();
-        this.userAveragePostsQuantity = postsQuantity / usersQuantity;
-        this.userAverageCommentsQuantity = commentsQuantity / usersQuantity;
-        this.averageCommentsQuantityPerPost = commentsQuantity / postsQuantity;
+        if(usersQuantity>0) {
+            this.userAveragePostsQuantity = postsQuantity / usersQuantity;
+        }
+        if (usersQuantity>0) {
+            this.userAverageCommentsQuantity = commentsQuantity / usersQuantity;
+        }
+        if (postsQuantity>0) {
+            this.averageCommentsQuantityPerPost = commentsQuantity / postsQuantity;
+        }
     }
 }
