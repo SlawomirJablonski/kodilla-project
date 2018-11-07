@@ -1,6 +1,7 @@
 package com.kodilla.exception.test;
 
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -8,17 +9,13 @@ import java.util.stream.Collectors;
 public class FlightFinder {
 
 
-    public ArrayList<Flight> getFlights() {
+    public List<Flight> getFlights() {
 
-        Flight flight001 = new Flight("Berlin", "Amstrdam");
+        Flight flight001 = new Flight("Berlin", "Amsterdam");
         Flight flight002 = new Flight("Berlin", "Roma");
         Flight flight003 = new Flight("Berlin", "Paris");
 
-        ArrayList<Flight> flights = new ArrayList<>();
-
-        flights.add(flight001);
-        flights.add(flight002);
-        flights.add(flight003);
+        List<Flight> flights = Arrays.asList(flight001, flight002, flight003);
 
         return flights;
     }
@@ -28,7 +25,7 @@ public class FlightFinder {
         Map<String, Boolean> map = getFlights().stream()
                 .filter(d -> d.getDepartureAirport().equals(flight.getDepartureAirport()))
                 .filter(a -> a.getArrivalAirport().equals(flight.getArrivalAirport()))
-                .collect(Collectors.toMap(b -> b.getArrivalAirport(), b -> b.getArrivalAirport().isEmpty()));
+                .collect(Collectors.toMap(Flight::getArrivalAirport, b -> b.getArrivalAirport().isEmpty()));
 
         if (map.size() == 0) {
 
