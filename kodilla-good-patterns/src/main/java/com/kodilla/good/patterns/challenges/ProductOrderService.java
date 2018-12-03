@@ -1,5 +1,7 @@
 package com.kodilla.good.patterns.challenges;
 
+import java.util.ArrayList;
+
 public class ProductOrderService {
 
     private InformationService informationService;
@@ -14,17 +16,14 @@ public class ProductOrderService {
         this.orderRepository = orderRepository;
     }
 
-    public OrderDto process(final OrderRequest orderRequest) {
-        boolean isOrdered = orderService.order(orderRequest.getUser(), orderRequest.getOrderId(),
-                orderRequest.getOrderDate());
+    public void process(final OrderRequest orderRequest, ArrayList<Order> orderList){
 
-        if (isOrdered) {
-            informationService.inform(orderRequest.getUser());
-            orderRepository.createOrder(orderRequest.getUser(), orderRequest.getOrderId(), orderRequest.getOrderDate());
-            return new OrderDto(orderRequest.getUser(), true);
-        } else {
-            return new OrderDto(orderRequest.getUser(), false);
-        }
+        Order order = orderService.createOrder(orderRequest);
+        informationService.inform(order.getUser());
+        ArrayList<Order> listOfOrders = orderRepository.saveOrder(order, orderList);
+
+        System.out.println(listOfOrders.get(0).getOrderId());
+
     }
 }
 

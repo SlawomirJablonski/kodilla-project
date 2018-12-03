@@ -1,13 +1,13 @@
 package com.kodilla.good.patterns.challenges;
 
-import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public class OrderRepository {
 
-    public boolean createOrder(final User user, final Integer orderId, final LocalDateTime orderDate) {
+    public ArrayList<Order> saveOrder(final Order order, final ArrayList<Order> orders) {
 
-        System.out.println("order number " + orderId + " made by " + user.getName() + " " + user.getSurname() + ", date of order: " + orderDate.toString());
+        orders.add(order);
 
-        return true;
+        return orders;
     }
 }

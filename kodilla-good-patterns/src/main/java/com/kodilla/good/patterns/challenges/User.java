@@ -1,10 +1,10 @@
 package com.kodilla.good.patterns.challenges;
 
-public class User {
+public final class User {
     private String name;
     private String surname;
 
-    public User(String name, String surname) {
+    public User(final String name, final String surname) {
         this.name = name;
         this.surname = surname;
     }
