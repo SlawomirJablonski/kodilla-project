@@ -1,14 +1,27 @@
 package com.kodilla.good.patterns.suppliers;
 
 import com.kodilla.good.patterns.suppliers.model.*;
+import com.kodilla.good.patterns.suppliers.service.InfoService;
+import com.kodilla.good.patterns.suppliers.service.SupplierRepository;
+import com.kodilla.good.patterns.suppliers.service.SupplyOrderService;
 
 import java.time.LocalDate;
 
 public class GlutenFreeShop implements Supplier{
 
+    private InfoService infoService;
+    private SupplyOrderService supplyOrderService;
+    private SupplierRepository supplierRepository;
+
+    public GlutenFreeShop(InfoService infoService, SupplyOrderService supplyOrderService, SupplierRepository supplierRepository) {
+        this.infoService = infoService;
+        this.supplyOrderService = supplyOrderService;
+        this.supplierRepository = supplierRepository;
+    }
+
     @Override
     public Offer createOffer(){
-        return new Offer(new ExtraFoodShop(),new Product(Category.DIARY_PRODUCTS,24752,25, Unit.KILOGRAM, LocalDate.of(2019, 01, 12),"China",15));
+        return new Offer(new GlutenFreeShop(new InfoService(),new SupplyOrderService(),new SupplierRepository()),new Product(Category.DIARY_PRODUCTS,24752,25, Unit.KILOGRAM, LocalDate.of(2019, 01, 12),"China",15));
     }
 
     @Override
