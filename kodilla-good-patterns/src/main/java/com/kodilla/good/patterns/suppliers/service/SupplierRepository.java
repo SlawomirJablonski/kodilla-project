@@ -1,4 +1,8 @@
-package com.kodilla.good.patterns.suppliers;
+package com.kodilla.good.patterns.suppliers.service;
+
+import com.kodilla.good.patterns.suppliers.model.Order;
+import com.kodilla.good.patterns.suppliers.model.ShopDependency;
+import com.kodilla.good.patterns.suppliers.model.SupplierDto;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;

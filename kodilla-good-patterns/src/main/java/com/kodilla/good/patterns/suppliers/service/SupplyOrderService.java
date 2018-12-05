@@ -1,4 +1,7 @@
-package com.kodilla.good.patterns.suppliers;
+package com.kodilla.good.patterns.suppliers.service;
+
+import com.kodilla.good.patterns.suppliers.model.*;
+
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;

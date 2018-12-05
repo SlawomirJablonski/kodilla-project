@@ -1,4 +1,4 @@
-package com.kodilla.good.patterns.suppliers;
+package com.kodilla.good.patterns.suppliers.model;
 
 import java.time.LocalDateTime;
 

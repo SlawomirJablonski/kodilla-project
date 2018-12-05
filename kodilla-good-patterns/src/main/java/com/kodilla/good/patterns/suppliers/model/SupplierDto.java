@@ -1,5 +1,7 @@
-package com.kodilla.good.patterns.suppliers;
+package com.kodilla.good.patterns.suppliers.model;
 
+
+import com.kodilla.good.patterns.suppliers.model.Category;
 
 import java.time.LocalDateTime;
 

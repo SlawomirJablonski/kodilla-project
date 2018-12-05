@@ -1,26 +1,29 @@
 package com.kodilla.good.patterns.suppliers;
 
-public class SupplyProcessor {
+import com.kodilla.good.patterns.suppliers.model.*;
 
-    private InfoService infoService;
-    private SupplyOrderService supplyOrderService;
-    private SupplierRepository supplierRepository;
+import java.time.LocalDate;
 
-    public SupplyProcessor(final InfoService infoService, final SupplyOrderService supplyOrderService, final SupplierRepository supplierRepository) {
-        this.infoService = infoService;
-        this.supplyOrderService = supplyOrderService;
-        this.supplierRepository = supplierRepository;
+public class GlutenFreeShop implements Supplier{
+
+    @Override
+    public Offer createOffer(){
+        return new Offer(new ExtraFoodShop(),new Product(Category.DIARY_PRODUCTS,24752,25, Unit.KILOGRAM, LocalDate.of(2019, 01, 12),"China",15));
     }
 
-    public void process(final Offer offer, ShopDependency shopDependency) {
+    @Override
+    public void process(Offer offer, ShopDependency shopDependency){
 
+        LocalDate goodsExpireDate = offer.getProduct().getExpireDate();
+        LocalDate maxExpireDate = shopDependency.getExpireDate();
         double budget = shopDependency.getBudget();
         int quantity = shopDependency.getRequestedQuantity();
         double unitPrice = offer.getProduct().getProductPrice();
         double goodsCost = quantity * unitPrice;
         String currentSupplierName = offer.getSupplier().getSupplierName();
 
-        if (budget>goodsCost){
+
+        if (maxExpireDate.plusWeeks(2).isBefore(goodsExpireDate) && goodsCost<=budget){
             Order order = supplyOrderService.createOrder(offer,shopDependency);
             supplyOrderService.addOrderToList(order,shopDependency);
             supplyOrderService.countBudget(offer,order,shopDependency);
@@ -30,5 +33,14 @@ public class SupplyProcessor {
         }else {
             System.out.println("Need price negotiations with "+currentSupplierName);
         }
+    }
+
+    @Override
+    public String getSupplierName(){
+        return "GlutenFreeShop";
+    }
+
+    public int getSupplierId(){
+        return 987654321;
     }
 }

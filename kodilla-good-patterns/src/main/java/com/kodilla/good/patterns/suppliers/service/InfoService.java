@@ -1,7 +1,12 @@
-package com.kodilla.good.patterns.suppliers;
+package com.kodilla.good.patterns.suppliers.service;
+
+import com.kodilla.good.patterns.suppliers.model.Offer;
+import com.kodilla.good.patterns.suppliers.model.Order;
+import com.kodilla.good.patterns.suppliers.model.Unit;
+
 
 public final class InfoService {
-    public void sendOrderConfirmation(final Offer offer,final Order order){
+    public void sendOrderConfirmation(final Offer offer, final Order order){
 
         String supplier = offer.getSupplier().getSupplierName();
         int goodsId = offer.getProduct().getProductId();
