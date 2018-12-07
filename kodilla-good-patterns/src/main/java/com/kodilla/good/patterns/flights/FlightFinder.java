@@ -12,32 +12,34 @@ public class FlightFinder {
     }
 
     public List<Flight> findFlightsFrom(String departure) {
-        List<Flight> foundedFlightsFrom = flights.getFlights().stream()
+        return flights.getFlights().stream()
                 .filter(d -> d.getDeparture().equals(departure))
                 .collect(Collectors.toList());
 
-        return foundedFlightsFrom;
     }
 
     public void printListFrom(List<Flight> flights, String airport) {
         if (flights.size() > 0) {
-            System.out.println("\n"+"Flights from "+airport+" airport:");
+            System.out.println("\n" + "Flights from " + airport + " airport:");
             flights.stream().forEach(System.out::println);
         }
     }
 
-    public List<Flight> findFlightsTo(String arrival)  {
-        List<Flight> foundedFlightsTo = flights.getFlights().stream()
+    public List<Flight> findFlightsTo(String arrival) {
+        return flights.getFlights().stream()
                 .filter(a -> a.getArrival().equals(arrival))
                 .collect(Collectors.toList());
-
-        return foundedFlightsTo;
     }
+
     public void printListTo(List<Flight> flights, String airport) {
         if (flights.size() > 0) {
-            System.out.println("\n"+"Flights to "+airport+" airport:");
+            System.out.println("\n" + "Flights to " + airport + " airport:");
             flights.stream().forEach(System.out::println);
         }
+    }
+
+    public boolean canMeetDestinationAfterTransfer(Flight offFlight, Flight onFlight,String destination){
+        return offFlight.getArrival().equals(onFlight.getDeparture()) && onFlight.getArrival().equals(destination);
     }
 
     public Set<List<Flight>> findFlightsWithTransfer(String departure, String arrival) {
@@ -49,7 +51,7 @@ public class FlightFinder {
                 .forEach(f -> {
 
                     List<Flight> temporaryConnection = flights.getFlights().stream()
-                            .filter(c -> f.getArrival().equals(c.getDeparture()) && c.getArrival().equals(arrival))
+                            .filter(c -> canMeetDestinationAfterTransfer(f,c,arrival))
                             .collect(Collectors.toList());
 
                     if (temporaryConnection.size() != 0) {
@@ -63,12 +65,13 @@ public class FlightFinder {
 
         return flightsWithTransfer;
     }
-    public void printTransfers(Set<List<Flight>> transfers,String departure, String arrival){
-        if(transfers.size()!=0){
-            System.out.println("\n"+"Flights with transfer:");
+
+    public void printTransfers(Set<List<Flight>> transfers, String departure, String arrival) {
+        if (transfers.size() != 0) {
+            System.out.println("\n" + "Flights with transfer:");
             transfers.stream().forEach(System.out::println);
-        }else {
-            System.out.println("\n"+"Missing flights with transfer");
+        } else {
+            System.out.println("\n" + "Missing flights with transfer");
         }
     }
 

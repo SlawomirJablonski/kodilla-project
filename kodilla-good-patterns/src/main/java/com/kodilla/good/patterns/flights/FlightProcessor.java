@@ -22,8 +22,5 @@ public class FlightProcessor {
         flightFinder.printListTo(arrivals, requestedArrival);
         Set<List<Flight>> transfers = flightFinder.findFlightsWithTransfer(requestedDeparture, requestedArrival);
         flightFinder.printTransfers(transfers,requestedDeparture,requestedArrival);
-
-
-
     }
 }
