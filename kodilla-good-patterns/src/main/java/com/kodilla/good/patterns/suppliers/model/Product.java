@@ -1,9 +1,6 @@
 package com.kodilla.good.patterns.suppliers.model;
 
-
 import java.time.LocalDate;
-
-;
 
 public class Product {
     private final Category category;

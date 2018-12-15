@@ -1,16 +1,13 @@
 package com.kodilla.good.patterns.suppliers;
 
-import com.kodilla.good.patterns.suppliers.model.Offer;
-import com.kodilla.good.patterns.suppliers.model.ShopDependency;
-import com.kodilla.good.patterns.suppliers.service.InfoService;
-import com.kodilla.good.patterns.suppliers.service.SupplierRepository;
-import com.kodilla.good.patterns.suppliers.service.SupplyOrderService;
+import com.kodilla.good.patterns.suppliers.model.Order;
+import com.kodilla.good.patterns.suppliers.model.Product;
 
 public interface Supplier {
 
-    Offer createOffer();
+    Order createOrder(Product product, int quantity);
 
-    void process(Offer offer, ShopDependency shopDependency);
+    void process(Order order);
 
     String getSupplierName();
 

@@ -1,28 +1,27 @@
 package com.kodilla.good.patterns.suppliers.model;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 public final class Order {
 
-    private final int orderNumber;
+    private final UUID orderNumber;
     private final int supplierId;
-    private final Category category;
-    private final int productId;
+    private final Product product;
     private final double quantity;
-    private final Unit unit;
     private final LocalDateTime orderDate;
+    private final String supplierName;
 
-    public Order(final int orderNumber, final int supplierId, final Category category, final int productId, final int quantity, final Unit unit, final LocalDateTime orderDate) {
-        this.orderNumber = orderNumber;
+    public Order(int supplierId, String supplierName, Product product, int quantity) {
+        this.orderNumber = UUID.randomUUID();
+        this.orderDate = LocalDateTime.now();
         this.supplierId = supplierId;
-        this.category = category;
-        this.productId = productId;
+        this.product = product;
         this.quantity = quantity;
-        this.unit = unit;
-        this.orderDate = orderDate;
+        this.supplierName = supplierName;
     }
 
-    public int getOrderNumber() {
+    public UUID getOrderNumber() {
         return orderNumber;
     }
 
@@ -30,23 +29,19 @@ public final class Order {
         return supplierId;
     }
 
-    public Category getCategory() {
-        return category;
-    }
-
-    public int getProductId() {
-        return productId;
-    }
-
     public double getQuantity() {
         return quantity;
     }
 
-    public Unit getUnit() {
-        return unit;
-    }
-
     public LocalDateTime getOrderDate() {
         return orderDate;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public String getSupplierName() {
+        return supplierName;
     }
 }
